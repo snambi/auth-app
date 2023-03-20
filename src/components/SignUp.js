@@ -30,7 +30,7 @@ const SignUp = () => {
         let authPromise = signUp(email, pword);
 
         authPromise.then((result) => {
-            alert(JSON.stringify(result))
+            console.log(JSON.stringify(result))
             navigate("/login")
         }).catch((error) =>{
             handleError(error)
