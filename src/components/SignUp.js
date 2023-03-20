@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import { Card, Form, Button } from 'react-bootstrap'
+import { Card, Form, Button, Container } from 'react-bootstrap'
 
 const SignUp = () => {
     const emailRef = useRef();
@@ -12,10 +12,11 @@ const SignUp = () => {
     }
 
   return (
-    <div className="w-100" style={{maxWidth: "400px"}}>
-        <Card>
+    <Container className="d-flex flex-wrap justify-content-center"
+        >
+        <Card className="px-3" style={{minWidth: "400px"}}>
             <Card.Body>
-            <h2 className="text-center mb-4">Sign Up</h2>
+            <h2 className="text-center mb-4">Register</h2>
             </Card.Body>
             <Form>
                 <Form.Group id="email">
@@ -41,7 +42,7 @@ const SignUp = () => {
         <div className='w-100 text-center mt-10'>
             Already have an account? Login
         </div>
-    </div>
+    </Container>
   )
 }
 
