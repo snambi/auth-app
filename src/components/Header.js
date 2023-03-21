@@ -14,7 +14,7 @@ const Header = () => {
       
       <Nav className='justify-content-end'>
         <Nav.Item>
-            <LinkContainer to='/yatra'>
+            <LinkContainer to='/yatras'>
                 <Nav.Link>Yatras</Nav.Link>
             </LinkContainer>
         </Nav.Item>

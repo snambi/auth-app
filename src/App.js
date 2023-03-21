@@ -5,6 +5,8 @@ import Header from './components/Header';
 import Home from './components/Home';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
+import Yatras from './components/Yatras';
+import Temples from './components/Temples';
 
 
 function App() {
@@ -16,6 +18,8 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/home' element={<Home />} />
+          <Route path='/yatras' element={<Yatras />} />
+          <Route path='/temples' element={<Temples />} />
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<SignUp />} />
         </Routes>
