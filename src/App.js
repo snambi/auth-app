@@ -10,9 +10,9 @@ import SignUp from './components/SignUp';
 function App() {
   return (
     <Container className="py-3">
-      <Header />
       <AuthProvider>
       <Router>
+        <Header />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/home' element={<Home />} />

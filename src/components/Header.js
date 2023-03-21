@@ -1,4 +1,7 @@
 import React from 'react'
+import { Button, NavLink } from 'react-bootstrap'
+import Nav from 'react-bootstrap/Nav'
+import { LinkContainer } from 'react-router-bootstrap'
 
 const Header = () => {
   return (
@@ -7,12 +10,29 @@ const Header = () => {
         {/* <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg> */}
         <span class="fs-4">Logo</span>
       </a>
-      <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-        <a class="me-3 py-2 text-decoration-none" href="/yatras">Yatras</a>
-        <a class="me-3 py-2 text-decoration-none" href="/temples">Temples</a>
-        <a class="me-3 py-2 text-decoration-none" href="/signup">Sign Up</a>
-        <a class="me-3 py-2 text-decoration-none btn btn-primary" href="/login">Login</a>
-      </nav>
+      
+      <Nav className='justify-content-end'>
+        <Nav.Item>
+            <LinkContainer to='/yatra'>
+                <Nav.Link>Yatras</Nav.Link>
+            </LinkContainer>
+        </Nav.Item>
+        <Nav.Item>
+            <LinkContainer to='/temples'>
+                <Nav.Link>Temples</Nav.Link>
+            </LinkContainer>
+        </Nav.Item>
+        <Nav.Item>
+            <LinkContainer to='/signup'>
+                <Nav.Link>Sign Up</Nav.Link>
+            </LinkContainer>
+        </Nav.Item>
+        <Nav.Item>
+            <LinkContainer to='/login'>
+                <Button>Login</Button>
+            </LinkContainer>
+        </Nav.Item>
+      </Nav>
     </header>
   )
 }
