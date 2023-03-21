@@ -10,8 +10,9 @@ function useAuth(){
 }
 
 const AuthProvider = ({children}) => {
-    const [currentUser, setCurrentUser] = useState()
-    const [loading, setLoading] = useState(true)
+    const [currentUser, setCurrentUser] = useState();
+    const [loading, setLoading] = useState(true);
+    const [loggedin, setLoggedin] = useState(false);
 
     function signUp(email, password){
         return createUserWithEmailAndPassword(firebaseAuth, email, password )
