@@ -14,13 +14,27 @@ const Login = () => {
         const [error, setError] = useState("");
     
         // global state 
-        const {signUp} = useAuth();
+        const {login} = useAuth();
         const navigate = useNavigate();
 
         function handleSubmit(e){
             e.preventDefault();
 
-            alert("clicked "+ e);
+            const email = emailRef.current.value;
+            const password = passwordRef.current.value;
+
+            alert("clicked "+ email + ":"+ password);
+            const loginPromise  = login( email, password);
+            
+            loginPromise.then((result) => {
+                alert(JSON.stringify(result));
+            })
+            .catch((error)=>{
+                alert(JSON.stringify(error));
+            })
+            .finally(()=>{
+
+            });
         }
 
   return (
@@ -40,7 +54,7 @@ const Login = () => {
                     <Form.Control type='password' required ref={passwordRef}></Form.Control>
                 </Form.Group>
                 <Button type='submit' disabled={loading} className='w-100 mt-2' 
-                    onClick={handleSubmit}> Sign Up
+                    onClick={handleSubmit}> Login
                 </Button>
                 <Form.Group>
                     <Form.Label id="form-error" className='w-100'></Form.Label>
