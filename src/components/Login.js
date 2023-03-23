@@ -28,6 +28,7 @@ const Login = () => {
             
             loginPromise.then((result) => {
                 alert(JSON.stringify(result));
+                navigate("/");
             })
             .catch((error)=>{
                 alert(JSON.stringify(error));

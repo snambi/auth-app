@@ -3,8 +3,12 @@ import { Button } from 'react-bootstrap'
 import Nav from 'react-bootstrap/Nav'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Link } from 'react-router-dom'
+import { useAuth } from '../contexts/AuthContext'
 
 const Header = () => {
+
+  const { loggedin, logout } = useAuth();
+
   return (
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
       
@@ -29,9 +33,16 @@ const Header = () => {
             </LinkContainer>
         </Nav.Item>
         <Nav.Item>
-            <LinkContainer to='/login'>
-                <Button>Login</Button>
-            </LinkContainer>
+          { loggedin && 
+              <LinkContainer to='/logout'>
+                  <Button>Logout</Button>
+              </LinkContainer>
+          } 
+          { !loggedin && 
+              <LinkContainer to='/login'>
+                  <Button>Login</Button>
+              </LinkContainer>
+          } 
         </Nav.Item>
       </Nav>
     </header>

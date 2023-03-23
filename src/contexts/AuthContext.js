@@ -11,7 +11,7 @@ function useAuth(){
 
 const AuthProvider = ({children}) => {
     const [currentUser, setCurrentUser] = useState();
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [loggedin, setLoggedin] = useState(false);
 
     function signUp(email, password){
@@ -23,7 +23,7 @@ const AuthProvider = ({children}) => {
     }
 
     function logout(){
-        return signOut();
+        return signOut(firebaseAuth);
     }
 
     function resetPassword(email){
@@ -40,9 +40,10 @@ const AuthProvider = ({children}) => {
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(firebaseAuth, user => {
-            //console.log("Auth state changed, user = "+ JSON.stringify(user));
-            alert("State Changed: "+ JSON.stringify(user));
+            console.log("Auth state changed, user = "+ JSON.stringify(user));
+            //alert("State Changed: "+ JSON.stringify(user));
             setCurrentUser(user)
+            loggedin = !loggedin;
         })
 
         return unsubscribe
@@ -52,6 +53,7 @@ const AuthProvider = ({children}) => {
     const value = {
         currentUser,
         loading,
+        loggedin,
         signUp,
         login,
         logout
