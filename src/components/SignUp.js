@@ -52,7 +52,7 @@ const SignUp = () => {
     <Container className="d-flex flex-wrap justify-content-center"
         >
         <Card className="px-3" style={{minWidth: "400px"}}>
-            <Card.Body>
+            <Card.Body className='w-100'>
             <h2 className="text-center mb-4">Register</h2>
             {error && <Alert variant="danger" className='w-100'>{error}</Alert> }
             </Card.Body>
