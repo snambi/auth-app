@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { Card, Form, Button, Container, Alert } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 
 const Login = () => {
@@ -62,7 +63,10 @@ const Login = () => {
                 </Form.Group>
             </Form>
         </Card>
-        <div className='w-100 text-center mt-10'> Forgot password? </div>
+        <div className='w-100 text-center mt-10'> Forgot password? <Link to='/forgot'>reset</Link></div>
+        <div className='w-100 text-center mt-10'> 
+         Register <Link to='/signup'>here</Link>
+        </div>
     </Container>
   )
 }

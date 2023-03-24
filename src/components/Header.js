@@ -44,11 +44,6 @@ const Header = () => {
                 <Nav.Link>Temples</Nav.Link>
             </LinkContainer>
         </Nav.Item>
-        <Nav.Item>
-            <LinkContainer to='/signup'>
-                <Nav.Link>Sign Up</Nav.Link>
-            </LinkContainer>
-        </Nav.Item>
         <Nav.Item id='login-button'>
           { loggedin && 
               <LinkContainer to='/logout'>
