@@ -17,17 +17,17 @@ const Login = () => {
         const {login} = useAuth();
         const navigate = useNavigate();
 
-        function handleSubmit(e){
+        async function handleSubmit(e){
             e.preventDefault();
 
             const email = emailRef.current.value;
             const password = passwordRef.current.value;
 
-            alert("clicked "+ email + ":"+ password);
+            //alert("clicked "+ email + ":"+ password);
             const loginPromise  = login( email, password);
             
             loginPromise.then((result) => {
-                alert(JSON.stringify(result));
+                //alert(JSON.stringify(result));
                 navigate("/");
             })
             .catch((error)=>{

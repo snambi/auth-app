@@ -7,7 +7,24 @@ import { useAuth } from '../contexts/AuthContext'
 
 const Header = () => {
 
-  const { loggedin, logout } = useAuth();
+  const { loggedin, logout, setLoggedin } = useAuth();
+
+  async function handleSubmit(e){
+    e.preventDefault();
+
+    const logoutPromise = logout();
+
+    logoutPromise.then((result) => {
+      console.log("logged out, loggedIn: "+ loggedin + ", res= "+ JSON.stringify(result));
+      if( loggedin == true ){
+        setLoggedin(false);
+      }
+    })
+    .catch((error) => {
+    })
+    .finally(()=>{
+    });
+  }
 
   return (
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
@@ -32,10 +49,10 @@ const Header = () => {
                 <Nav.Link>Sign Up</Nav.Link>
             </LinkContainer>
         </Nav.Item>
-        <Nav.Item>
+        <Nav.Item id='login-button'>
           { loggedin && 
               <LinkContainer to='/logout'>
-                  <Button>Logout</Button>
+                  <Button onClick={handleSubmit}>Logout</Button>
               </LinkContainer>
           } 
           { !loggedin && 

@@ -5,7 +5,6 @@ import { firebaseAuth } from '../firebase'
 const AuthContext = React.createContext()
 
 function useAuth(){
-    console.log("creating context")
     return useContext(AuthContext)
 }
 
@@ -15,7 +14,7 @@ const AuthProvider = ({children}) => {
     const [loggedin, setLoggedin] = useState(false);
 
     function signUp(email, password){
-        return createUserWithEmailAndPassword(firebaseAuth, email, password )
+        return createUserWithEmailAndPassword(firebaseAuth, email, password );
     }
 
     function login(email, password){
@@ -35,19 +34,32 @@ const AuthProvider = ({children}) => {
     }
 
     function updatePassword(password){
+    }
 
+    function authListener(){
+        const listener = onAuthStateChanged(firebaseAuth, user => {
+            if( user ){
+                //console.log("Auth state changed, user = "+ JSON.stringify(user));
+                //alert("State Changed: "+ JSON.stringify(user));
+                setCurrentUser(user);
+                if(loggedin == false){
+                    setLoggedin(true);  
+                }
+            }else{
+                if(loggedin == true ){
+                    setLoggedin(false);
+                    alert("Set loggedIn: "+ loggedin);
+                }else{
+                    //alert("not handled");
+                }
+            }
+        });
+
+        return listener;
     }
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(firebaseAuth, user => {
-            console.log("Auth state changed, user = "+ JSON.stringify(user));
-            //alert("State Changed: "+ JSON.stringify(user));
-            setCurrentUser(user)
-            loggedin = !loggedin;
-        })
-
-        return unsubscribe
-
+        authListener();
     }, []);
 
     const value = {
@@ -56,7 +68,8 @@ const AuthProvider = ({children}) => {
         loggedin,
         signUp,
         login,
-        logout
+        logout,
+        setLoggedin
     }
 
   return (
