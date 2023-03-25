@@ -35,13 +35,23 @@ const Header = () => {
       
       <Nav className='justify-content-end'>
         <Nav.Item>
-            <LinkContainer to='/yatras'>
-                <Nav.Link>Yatras</Nav.Link>
+            <LinkContainer to='/tech'>
+                <Nav.Link>Tech</Nav.Link>
             </LinkContainer>
         </Nav.Item>
         <Nav.Item>
-            <LinkContainer to='/temples'>
-                <Nav.Link>Temples</Nav.Link>
+            <LinkContainer to='/home'>
+                <Nav.Link>Home</Nav.Link>
+            </LinkContainer>
+        </Nav.Item>
+        <Nav.Item>
+            <LinkContainer to='/shoes'>
+                <Nav.Link>Shoes</Nav.Link>
+            </LinkContainer>
+        </Nav.Item>        
+        <Nav.Item>
+            <LinkContainer to='/orders'>
+                <Nav.Link>Orders</Nav.Link>
             </LinkContainer>
         </Nav.Item>
         <Nav.Item id='login-button'>

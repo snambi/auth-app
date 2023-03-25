@@ -6,7 +6,7 @@ import Home from './components/Home';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 import Yatras from './components/Yatras';
-import Temples from './components/Temples';
+import Orders from './components/Orders';
 import PrivateRoute from './components/PrivateRoute';
 
 
@@ -18,9 +18,10 @@ function App() {
         <Header />
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/home' element={<Home />} />
-          <Route path='/yatras' element={<PrivateRoute><Yatras /></PrivateRoute>} />
-          <Route path='/temples' element={<Temples />} />
+          <Route path='/shoes' element={<Yatras />} />
+          <Route path='/tech' element={<Yatras />} />
+          <Route path='/home' element={<Yatras />} />
+          <Route path='/orders' element={<PrivateRoute><Orders /></PrivateRoute>} />
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<SignUp />} />
         </Routes>
