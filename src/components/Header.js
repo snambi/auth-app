@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button } from 'react-bootstrap'
+import { Button, Image } from 'react-bootstrap'
 import Nav from 'react-bootstrap/Nav'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Link } from 'react-router-dom'
@@ -30,7 +30,9 @@ const Header = () => {
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
       
       <Link className='me-md-auto text-dark text-decoration-none' to='/'>
-        <span class="fs-4 text-decoration-none">Logo</span>
+        <span class="fs-4 text-decoration-none">
+          <Image src='/logo48.png'></Image>
+        </span>
       </Link>
       
       <Nav className='justify-content-end'>
