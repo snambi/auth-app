@@ -12,12 +12,15 @@ code {
     monospace;
 }
 
-.boxes {
-  width: 400px;
-}
 
-@media only screen and (min-width: 360px) and (max-width: 430px) {
+@media only screen and (max-width: 530px) {
 	.boxes {
     width: 100%;
+  }
+}
+
+@media only screen and (min-width: 530px) {
+	.boxes {
+    width: 400px;
   }
 }
