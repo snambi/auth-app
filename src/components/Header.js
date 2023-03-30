@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Image } from 'react-bootstrap'
+import { Button, Container, Image, Navbar } from 'react-bootstrap'
 import Nav from 'react-bootstrap/Nav'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Link } from 'react-router-dom'
@@ -27,14 +27,48 @@ const Header = () => {
   }
 
   return (
-    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-      
+    <Navbar bg="light" expand="md" className="border-bottom mb-4">
+      <Container>
+        <Navbar.Brand href='/'>
+          <img src="/logo48.png" width="35" height="35" />
+          <span>&nbsp;App</span>
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav" className='me-2 justify-content-end'>
+          <Nav>
+              <Nav.Link href="/tech">Tech</Nav.Link>
+              <Nav.Link href="/home">Home</Nav.Link>
+              <Nav.Link href="/shoes">Shoes</Nav.Link>
+              <Nav.Link href="/yatras">Yatras</Nav.Link>
+              <Nav.Link href="/orders">Orders</Nav.Link>
+              <Nav.Item id='login-button'>
+                  { loggedin && 
+                      <LinkContainer to='/logout'>
+                          <Button onClick={handleSubmit}>Logout</Button>
+                      </LinkContainer>
+                  } 
+                  { !loggedin && 
+                      <LinkContainer to='/login'>
+                          <Button>Login</Button>
+                      </LinkContainer>
+                  } 
+            </Nav.Item>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  )
+}
+
+export default Header
+
+/*
+<header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom"> 
       <Link className='me-md-auto text-dark text-decoration-none' to='/'>
         <span class="fs-4 text-decoration-none">
           <Image src='/logo48.png'></Image>
         </span>
       </Link>
-      
       <Nav className='justify-content-end'>
         <Nav.Item>
             <LinkContainer to='/tech'>
@@ -75,7 +109,5 @@ const Header = () => {
         </Nav.Item>
       </Nav>
     </header>
-  )
-}
 
-export default Header
+*/
