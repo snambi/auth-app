@@ -7,7 +7,7 @@ import { useAuth } from '../contexts/AuthContext'
 
 const Header = () => {
 
-  const { loggedin, logout, setLoggedin } = useAuth();
+  const { loggedin, logout, setLoggedin, setCurrentUser } = useAuth();
 
   async function handleSubmit(e){
     e.preventDefault();
@@ -18,6 +18,7 @@ const Header = () => {
       console.log("logged out, loggedIn: "+ loggedin + ", res= "+ JSON.stringify(result));
       if( loggedin == true ){
         setLoggedin(false);
+        setCurrentUser(null);
       }
     })
     .catch((error) => {
@@ -36,11 +37,21 @@ const Header = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className='me-2 justify-content-end'>
           <Nav>
-              <Nav.Link href="/tech">Tech</Nav.Link>
-              <Nav.Link href="/home">Home</Nav.Link>
-              <Nav.Link href="/shoes">Shoes</Nav.Link>
-              <Nav.Link href="/yatras">Yatras</Nav.Link>
-              <Nav.Link href="/orders">Orders</Nav.Link>
+              <Nav.Item>
+                <LinkContainer to='/tech'><Nav.Link>Tech</Nav.Link></LinkContainer>
+              </Nav.Item>
+              <Nav.Item>
+                <LinkContainer to='/home'><Nav.Link>Home</Nav.Link></LinkContainer>
+              </Nav.Item>
+              <Nav.Item>
+                <LinkContainer to='/shoes'><Nav.Link>Shoes</Nav.Link></LinkContainer>
+              </Nav.Item>
+              <Nav.Item>
+                <LinkContainer to='/yatras'><Nav.Link>Yatras</Nav.Link></LinkContainer>
+              </Nav.Item>
+              <Nav.Item>
+                <LinkContainer to='/orders'><Nav.Link>Orders</Nav.Link></LinkContainer>
+              </Nav.Item>
               <Nav.Item id='login-button'>
                   { loggedin && 
                       <LinkContainer to='/logout'>

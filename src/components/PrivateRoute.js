@@ -6,9 +6,11 @@ import { Navigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext'
 
 const PrivateRoute = ({ children }) => {
-    const { currentUser } = useAuth();
+    const { currentUser, loggedin } = useAuth();
     
-    return currentUser ? <>{children}</> : <Navigate to='/login' />
+    console.log("Private Route: currentUser: " + JSON.stringify(currentUser) + ", LoggedIn="+ loggedin);
+
+    return loggedin ? <>{children}</> : <Navigate to='/login' />
 }
 
 export default PrivateRoute

@@ -39,18 +39,20 @@ const AuthProvider = ({children}) => {
     function authListener(){
         const listener = onAuthStateChanged(firebaseAuth, user => {
             if( user ){
-                //console.log("Auth state changed, user = "+ JSON.stringify(user));
-                //alert("State Changed: "+ JSON.stringify(user));
+                console.log("Auth state changed, user = "+ JSON.stringify(user));
+                //alert("Logged in 1 : "+ JSON.stringify(user)+ ", loggedin="+ loggedin);
                 setCurrentUser(user);
                 if(loggedin == false){
                     setLoggedin(true);  
                 }
+                console.log("Logged in 2 : "+ JSON.stringify(user)+ ", loggedin="+ loggedin);
             }else{
                 if(loggedin == true ){
                     setLoggedin(false);
-                    alert("Set loggedIn: "+ loggedin);
+                    setCurrentUser(null);
+                    console.log("Logged out : "+ JSON.stringify(user)+ ", loggedin="+ loggedin);
                 }else{
-                    //alert("not handled");
+                    console.log("Not handled: "+ JSON.stringify(user)+ ", loggedin="+ loggedin);
                 }
             }
         });
@@ -69,6 +71,7 @@ const AuthProvider = ({children}) => {
         signUp,
         login,
         logout,
+        setCurrentUser,
         setLoggedin
     }
 
